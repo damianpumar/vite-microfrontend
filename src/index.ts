@@ -9,6 +9,8 @@ const REMOTE_ENTRY = 'remoteEntry.js';
 const loadGlobalEnv = (mode: string, currentWorkingDir = process.cwd()): Record<string, string> => {
 	const parentDir = path.dirname(currentWorkingDir);
 
+	if (parentDir === currentWorkingDir) return {};
+
 	const globalEnv = loadEnv(mode, parentDir);
 
 	if (Object.keys(globalEnv).length > 1) return globalEnv;
@@ -31,7 +33,7 @@ const loadEnvs = (mode: string) => {
 };
 
 const getProcessVariable = (env: Record<string, string>) => {
-	const project = process.cwd().split('/').pop();
+	const project = path.basename(process.cwd());
 
 	const url = env[`VITE_${project?.toUpperCase()}`];
 	const port = url.split(':').pop();
@@ -152,7 +154,7 @@ export const federation = (config: Config): PluginOption[] => {
 export interface MfConfig extends UserConfig {
 	federation: Config;
 }
-export interface MfConfigExport extends UserConfigFnObject {}
+export interface MfConfigExport extends UserConfigFnObject { }
 
 export function defineConfig(customConfig: MfConfig): MfConfigExport {
 	return DC(({ mode }) => {
