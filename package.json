@@ -1,33 +1,37 @@
 {
-	"name": "vite-microfrontend",
-	"version": "0.0.13",
-	"type": "module",
-	"scripts": {
-		"build": "tsc"
-	},
-	"dependencies": {
-		"@module-federation/vite": "1.5.0",
-		"vite": "6.3.5"
-	},
-	"devDependencies": {
-		"@types/node": "24.0.10",
-		"typescript": "5.8.3"
-	},
-	"peerDependencies": {
-		"vite": "6.3.5",
-		"@types/node": "24.0.10"
-	},
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js"
-		}
-	},
-	"typesVersions": {
-		"*": {
-			"types": [
-				"./dist/index.d.ts"
-			]
-		}
-	}
+  "name": "vite-microfrontend",
+  "version": "0.0.13",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "publish": "npm publish --access public"
+  },
+  "dependencies": {
+    "@module-federation/vite": "1.5.0",
+    "vite": "6.3.5"
+  },
+  "devDependencies": {
+    "@types/node": "24.0.10",
+    "typescript": "5.8.3"
+  },
+  "peerDependencies": {
+    "vite": "6.3.5",
+    "@types/node": "24.0.10"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "types": [
+        "./dist/index.d.ts"
+      ]
+    }
+  }
 }
